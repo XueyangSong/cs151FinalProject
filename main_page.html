@@ -1,0 +1,63 @@
+<html>
+
+<!--=======================================================================-->
+
+<head>
+    <title>Werewolf</title>
+    <script type='text/javascript' src='http://worksheets.stanford.edu/epilog/javascript/epilog.js'></script>
+    <script type='text/javascript' src='http://worksheets.stanford.edu/worksheets/javascript/worksheets.js'></script>
+</head>
+
+<!--=======================================================================-->
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' bgcolor='#f4f6f8'
+      onload='initialize()'>
+  <center>
+    <table width='640' cellpadding='0' cellspacing='0' border='0'>
+      <tr>
+        <td width='640' height='90' align='center'>
+          <span style='font-size:48px;color:#000088;cursor:pointer;width:100%'>Werewolf</span>
+      </td>
+      </tr>
+    </table>
+  </center>
+
+  <center>
+      <div id='select_num_player'>
+          <span>How many players are in the game?</span>
+          <select id='num_player' style='width:80' onchange='modselector(this)'>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+          </select>
+      </div>
+      <div id='select_configuration'>
+          <span>How many players are in the game?</span>
+          <select id='room(cs151)' style='width:80' onchange='modselector(this)'>
+          </select>
+      </div>
+  </center>
+
+<!--=======================================================================-->
+
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+    configuration(12, hunterwolf_guardian)
+    configuration(12, idiot)
+    configuration(13, mixed_hunterwolf_guardian)
+    configuration(13, mixed_idiot)
+    configuration(14, cupid)
+</textarea>
+
+
+<textarea id='library' type='text/hrf' style='display:none'>
+    selected_num_player :- value()
+
+</textarea>
+
+<!--=======================================================================-->
+
+</body>
+</html>
