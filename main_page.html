@@ -6,6 +6,18 @@
     <title>Werewolf</title>
     <script type='text/javascript' src='http://worksheets.stanford.edu/epilog/javascript/epilog.js'></script>
     <script type='text/javascript' src='http://worksheets.stanford.edu/worksheets/javascript/worksheets.js'></script>
+    <script>function populatesheet ()
+             {populateinnerhtmls();
+              populatetables();
+              populateoptions();
+              populatevalues();
+              populatevaluelists();
+              populateattributes();
+              populatestyles();
+              for (var i=0;i<populators.length; i++) {populators[i].call(null)};
+              document.getElementsByName('facts')[0].value = grindem(lambda.sort());
+              reposition();
+              return true}</script>
 </head>
 
 <!--=======================================================================-->
@@ -23,19 +35,47 @@
   </center>
 
   <center>
-      <div id='select_num_player'>
-          <span>How many players are in the game?</span>
-          <select id='num_player' style='width:80' onchange='modselector(this)'>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-          </select>
-      </div>
-      <div id='select_configuration'>
-          <span>How many players are in the game?</span>
-          <select id='room(cs151)' style='width:80' onchange='modselector(this)'>
-          </select>
-      </div>
+      <br />
+      <table>
+          <tr id='select_num_player'>
+              <td><span>How many players are in the game?</span></td>
+              <td>
+                  <select id='num_player_selector' style='width:100; display:block' onchange='modselector(this)'>
+                      <option value='unknown'></option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='num_player(12)'>
+              <td><span>How many players are in the game?</span></td>
+              <td>
+                  <select id='12' onchange='modselector(this)' style='width:100'>
+                      <option>hunterwolf_guardian</option>
+                      <option>idiot</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='num_player(13)'>
+              <td><span>How many players are in the game?</span></td>
+              <td>
+                  <select id='13' onchange='modselector(this)' style='width:100'>
+                      <option>mixed_hunterwolf_guardian</option>
+                      <option>mixed_idiot</option>
+                  </select>
+              </td>
+          </tr>
+          <tr  id='num_player(14)'>
+              <td><span>How many players are in the game?</span></td>
+              <td>
+                  <select id='14' onchange='modselector(this)' style='width:100'>
+                      <option>cupid</option>
+                      <option >mixed_revenger</option>
+                  </select>
+                </td>
+            </tr>
+      </table>
   </center>
 
 <!--=======================================================================-->
@@ -44,18 +84,40 @@
 <!--=======================================================================-->
 
 <textarea id='lambda' type='text/hrf' style='display:none'>
+    num_player(12)
+    num_player(13)
+    num_player(14)
+    config(hunterwolf_guardian)
+    config(idiot)
+    config(mixed_hunterwolf_guardian)
+    config(mixed_idiot)
+    config(cupid)
+    config(mixed_revenger)
     configuration(12, hunterwolf_guardian)
     configuration(12, idiot)
     configuration(13, mixed_hunterwolf_guardian)
     configuration(13, mixed_idiot)
     configuration(14, cupid)
+    configuration(14, mixed_revenger)
+    style(num_player(12), "display", "none")
+    style(num_player(13), "display", "none")
+    style(num_player(14), "display", "none")
 </textarea>
 
 
 <textarea id='library' type='text/hrf' style='display:none'>
-    selected_num_player :- value()
+    select(num_player_selector, X) :: distinct(X, unknown)  & num_player(Y) & distinct(X, Y) ==>
+        ~style(num_player(X), "display", "none") & style(num_player(X), "display", "")
+        & style(num_player(Y), "display", "none") & ~style(num_player(Y), "display", "")
+
+    select(num_player_selector, X) :: same(X, unknown) ==>
+        style(num_player(X), "display", "none") & ~style(num_player(X), "display", "")
+
+
 
 </textarea>
+
+<textarea name='facts' style='font-family:courier;background-color:#eeeeee' rows='48' cols='32' disabled='true'></textarea>
 
 <!--=======================================================================-->
 
