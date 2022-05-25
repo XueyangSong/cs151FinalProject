@@ -44,38 +44,35 @@
                       <option value='unknown'></option>
                       <option>12</option>
                       <option>13</option>
-                      <option>14</option>
                   </select>
               </td>
           </tr>
           <tr id='num_player(12)'>
               <td><span>How many players are in the game?</span></td>
               <td>
-                  <select id='12' onchange='modselector(this)' style='width:100'>
+                  <select id='12_config_selector' onchange='modselector(this)' style='width:100'>
+                      <option value='unknown'></option>
                       <option>hunterwolf_guardian</option>
                       <option>idiot</option>
+                      <option>wolfking</option>
                   </select>
               </td>
           </tr>
           <tr id='num_player(13)'>
               <td><span>How many players are in the game?</span></td>
               <td>
-                  <select id='13' onchange='modselector(this)' style='width:100'>
+                  <select id='13_config_selector' onchange='modselector(this)' style='width:100'>
+                      <option value='unknown'></option>
                       <option>mixed_hunterwolf_guardian</option>
                       <option>mixed_idiot</option>
+                      <option>mixed_wolfking</option>
                   </select>
               </td>
           </tr>
-          <tr  id='num_player(14)'>
-              <td><span>How many players are in the game?</span></td>
-              <td>
-                  <select id='14' onchange='modselector(this)' style='width:100'>
-                      <option>cupid</option>
-                      <option >mixed_revenger</option>
-                  </select>
-                </td>
-            </tr>
       </table>
+  </center>
+
+  <center>
   </center>
 
 <!--=======================================================================-->
@@ -86,22 +83,20 @@
 <textarea id='lambda' type='text/hrf' style='display:none'>
     num_player(12)
     num_player(13)
-    num_player(14)
     config(hunterwolf_guardian)
     config(idiot)
+    config(wolfking)
     config(mixed_hunterwolf_guardian)
     config(mixed_idiot)
-    config(cupid)
-    config(mixed_revenger)
+    config(mixed_wolfking)
     configuration(12, hunterwolf_guardian)
     configuration(12, idiot)
+    configuration(12, wolfking)
     configuration(13, mixed_hunterwolf_guardian)
     configuration(13, mixed_idiot)
-    configuration(14, cupid)
-    configuration(14, mixed_revenger)
+    configuration(13, mixed_wolfking)
     style(num_player(12), "display", "none")
     style(num_player(13), "display", "none")
-    style(num_player(14), "display", "none")
 </textarea>
 
 
@@ -113,7 +108,12 @@
     select(num_player_selector, X) :: same(X, unknown) ==>
         style(num_player(X), "display", "none") & ~style(num_player(X), "display", "")
 
-
+    select(12_config_selector, X) :: distinct(X, unknown) ==> current_config(12, X)
+    select(12_config_selector, X) ::
+        config(Y) & distinct(X, Y) & distinct(X, unknown) ==> ~current_config(12, Y) & ~current_config(13, Y)
+    select(13_config_selector, X) :: distinct(X, unknown) ==> current_config(13, X)
+    select(13_config_selector, X) ::
+        config(Y) & distinct(X, Y) & distinct(X, unknown) ==>  ~current_config(12, Y) & ~current_config(13, Y)
 
 </textarea>
 
