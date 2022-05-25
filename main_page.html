@@ -48,7 +48,7 @@
               </td>
           </tr>
           <tr id='num_player(12)'>
-              <td><span>How many players are in the game?</span></td>
+              <td><span>Which config you want to play?</span></td>
               <td>
                   <select id='12_config_selector' onchange='modselector(this)' style='width:100'>
                       <option value='unknown'></option>
@@ -59,7 +59,7 @@
               </td>
           </tr>
           <tr id='num_player(13)'>
-              <td><span>How many players are in the game?</span></td>
+              <td><span>Which config you want to play?</span></td>
               <td>
                   <select id='13_config_selector' onchange='modselector(this)' style='width:100'>
                       <option value='unknown'></option>
@@ -73,7 +73,203 @@
   </center>
 
   <center>
+      <table>
+          <tr id='mixed_child' style='display: none'>
+              <td><span><b>Mixed child: </b>Whom do you want to guard tonight?</span></td>
+              <td>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='guardian(12)' style='display: none'>
+              <td><span><b>Guardian: </b>Whom do you want to guard tonight?</span></td>
+              <td>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='guardian(13)' style='display: none'>
+              <td><span><b>Guardian: </b>Whom do you want to guard tonight?</span></td>
+              <td>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='werewolf(12)' style='display: none'>
+              <td><span><b>Werewolf: </b>Whom do you want to kill tonight?</span></td>
+              <td>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='werewolf(13)' style='display: none'>
+              <td><span><b>Werewolf: </b>Whom do you want to kill tonight?</span></td>
+              <td>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='witch(12)' style='display: none'>
+              <td><span><b>Witch: </b>Player <span id="killed"></span> is killed. Do you want to save?</span></td>
+              <td>
+                  <select id='witch_choise(12)' onchange='modselector(this)'>
+                      <option>yes</option>
+                      <option>no</option>
+                  </select>
+              </td>
+              <td id='whether_poison(12)' style='display: none'><span>Do you want to poison anyone?</span></td>
+              <td id='poison_selecter(12)' style='display: none'>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='witch(13)' style='display: none'>
+              <td><span><b>Witch: </b>Player <span id="killed"></span> is killed. Do you want to save?</span></td>
+              <td>
+                  <select id='witch_choise(13)' onchange='modselector(this)'>
+                      <option>yes</option>
+                      <option>no</option>
+                  </select>
+              </td>
+              <td id='whether_poison(13)' style='display: none'><span>Do you want to poison anyone?</span></td>
+              <td id='poison_selecter(13)' style='display: none'>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id="hunter" style="display: none">
+              <td><span><b>Hunter: </b>The status of your gun is <span id="hunter_status"></span></td>
+          </tr>
+          <tr id='seer(12)' style='display: none'>
+              <td><span><b>Seer: </b>Whom do you want to verify tonight?</span></td>
+              <td>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                  </select>
+              </td>
+          </tr>
+          <tr id='seer(13)' style='display: none'>
+              <td><span><b>Seer: </b>Whom do you want to verify tonight?</span></td>
+              <td>
+                  <select onchange='modselector(this)'>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                  </select>
+              </td>
+          </tr>
+      </table>
   </center>
+
 
 <!--=======================================================================-->
 
@@ -108,12 +304,48 @@
     select(num_player_selector, X) :: same(X, unknown) ==>
         style(num_player(X), "display", "none") & ~style(num_player(X), "display", "")
 
+    select(witch_choise(X), no) ::
+        num_player(Y) & distinct(X, Y) ==>
+            style(whether_poison(X), "display", "") & ~style(whether_poison(X), "display", "none")
+            & style(poison_selecter(X), "display", "") & ~style(poison_selecter(X), "display", "none")
+            & ~style(whether_poison(Y), "display", "") & style(whether_poison(Y), "display", "none")
+            & ~style(poison_selecter(Y), "display", "") & style(poison_selecter(Y), "display", "none")
+
     select(12_config_selector, X) :: distinct(X, unknown) ==> current_config(12, X)
     select(12_config_selector, X) ::
         config(Y) & distinct(X, Y) & distinct(X, unknown) ==> ~current_config(12, Y) & ~current_config(13, Y)
     select(13_config_selector, X) :: distinct(X, unknown) ==> current_config(13, X)
     select(13_config_selector, X) ::
         config(Y) & distinct(X, Y) & distinct(X, unknown) ==>  ~current_config(12, Y) & ~current_config(13, Y)
+
+    current_config(N, X) ::
+        num_player(N1) & distinct(N, N1) ==>
+            style(werewolf(N), "display", "") & ~style(werewolf(N), "display", "none")
+            & style(werewolf(13), "display", "none") & ~style(werewolf(13), "display", "")
+            & style(witch(N), "display", "") & ~style(witch(N), "display", "none")
+            & style(witch(N1), "display", "none") & ~style(witch(N1), "display", "")
+            & style(hunter, "display", "") & ~style(hunter, "display", "none")
+            & style(seer(N), "display", "") & ~style(seer(N), "display", "none")
+            & style(seer(N1), "display", "none") & ~style(seer(N1), "display", "")
+    current_config(12, X) ::
+        distinct(X, idiot) ==>
+            style(guardian(12), "display", "") & ~style(guardian(12), "display", "none")
+            & style(guardian(13), "display", "none") & ~style(guardian(13), "display", "")
+    current_config(12, idiot) ::
+        style(guardian(12), "display", "none") & ~style(guardian(12), "display", "")
+        & style(guardian(13), "display", "none") & ~style(guardian(13), "display", "")
+
+    current_config(13, X) ::
+        style(mixed_child, "display", "") & ~style(mixed_child, "display", "none")
+    current_config(13, X) ::
+        distinct(X, mixed_idiot) ==>
+            style(guardian(13), "display", "") & ~style(guardian(13), "display", "none")
+            & style(guardian(12), "display", "none") & ~style(guardian(12), "display", "")
+    current_config(13, mixed_idiot) ::
+        style(guardian(12), "display", "none") & ~style(guardian(12), "display", "")
+        & style(guardian(13), "display", "none") & ~style(guardian(13), "display", "")
+
+
 
 </textarea>
 
