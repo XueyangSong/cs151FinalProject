@@ -75,6 +75,10 @@
   <center>
       <table>
           <tr id='mixed_child' style='display: none'>
+              <td>
+                  <input type='checkbox' id='mix' name='mix' onchange='modcheck(this)'>
+                  <label for='mix'>finished</label><br>
+              </td>
               <td><span><b>Mixed child: </b>Whom do you want to guard tonight?</span></td>
               <td>
                   <select onchange='modselector(this)'>
@@ -95,6 +99,10 @@
               </td>
           </tr>
           <tr id='guardian(12)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='g_12' name='g_12' onchange='modcheck(this)'>
+                  <label for='g_12'>finished</label><br>
+              </td>
               <td><span><b>Guardian: </b>Whom do you want to guard tonight?</span></td>
               <td>
                   <select onchange='modselector(this)'>
@@ -114,6 +122,10 @@
               </td>
           </tr>
           <tr id='guardian(13)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='g_13' name='g_13' onchange='modcheck(this)'>
+                  <label for='g_13'>finished</label><br>
+              </td>
               <td><span><b>Guardian: </b>Whom do you want to guard tonight?</span></td>
               <td>
                   <select onchange='modselector(this)'>
@@ -134,6 +146,10 @@
               </td>
           </tr>
           <tr id='werewolf(12)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='w_12' name='w_12' onchange='modcheck(this)'>
+                  <label for='w_12'>finished</label><br>
+              </td>
               <td><span><b>Werewolf: </b>Whom do you want to kill tonight?</span></td>
               <td>
                   <select onchange='modselector(this)'>
@@ -153,6 +169,10 @@
               </td>
           </tr>
           <tr id='werewolf(13)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='w_13' name='w_13' onchange='modcheck(this)'>
+                  <label for='w_13'>finished</label><br>
+              </td>
               <td><span><b>Werewolf: </b>Whom do you want to kill tonight?</span></td>
               <td>
                   <select onchange='modselector(this)'>
@@ -173,6 +193,10 @@
               </td>
           </tr>
           <tr id='witch(12)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='witch_12' name='witch_12' onchange='modcheck(this)'>
+                  <label for='witch_12'>finished</label><br>
+              </td>
               <td><span><b>Witch: </b>Player <span id="killed"></span> is killed. Do you want to save?</span></td>
               <td>
                   <select id='witch_choise(12)' onchange='modselector(this)'>
@@ -199,6 +223,10 @@
               </td>
           </tr>
           <tr id='witch(13)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='witch_13' name='witch_13' onchange='modcheck(this)'>
+                  <label for='witch_13'>finished</label><br>
+              </td>
               <td><span><b>Witch: </b>Player <span id="killed"></span> is killed. Do you want to save?</span></td>
               <td>
                   <select id='witch_choise(13)' onchange='modselector(this)'>
@@ -226,9 +254,17 @@
               </td>
           </tr>
           <tr id="hunter" style="display: none">
+              <td>
+                  <input type='checkbox' id='h' name='h' onchange='modcheck(this)'>
+                  <label for='h'>finished</label><br>
+              </td>
               <td><span><b>Hunter: </b>The status of your gun is <span id="hunter_status"></span></td>
           </tr>
           <tr id='seer(12)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='s_12' name='s_12' onchange='modcheck(this)'>
+                  <label for='s_12'>finished</label><br>
+              </td>
               <td><span><b>Seer: </b>Whom do you want to verify tonight?</span></td>
               <td>
                   <select onchange='modselector(this)'>
@@ -248,6 +284,10 @@
               </td>
           </tr>
           <tr id='seer(13)' style='display: none'>
+              <td>
+                  <input type='checkbox' id='s_13' name='s_13' onchange='modcheck(this)'>
+                  <label for='s_13'>finished</label><br>
+              </td>
               <td><span><b>Seer: </b>Whom do you want to verify tonight?</span></td>
               <td>
                   <select onchange='modselector(this)'>
@@ -317,6 +357,17 @@
     select(13_config_selector, X) :: distinct(X, unknown) ==> current_config(13, X)
     select(13_config_selector, X) ::
         config(Y) & distinct(X, Y) & distinct(X, unknown) ==>  ~current_config(12, Y) & ~current_config(13, Y)
+
+    select(mix, true) :: ~style(mixed_child, "display", "") & style(mixed_child, "display", "none")
+    select(g_12, true) :: ~style(guardian(12), "display", "") & style(guardian(12), "display", "none")
+    select(g_13, true) :: ~style(guardian(13), "display", "") & style(guardian(13), "display", "none")
+    select(w_12, true) :: ~style(werewolf(12), "display", "") & style(werewolf(12), "display", "none")
+    select(w_13, true) :: ~style(werewolf(13), "display", "") & style(werewolf(13), "display", "none")
+    select(witch_12, true) :: ~style(witch(12), "display", "") & style(witch(12), "display", "none")
+    select(witch_13, true) :: ~style(witch(13), "display", "") & style(witch(13), "display", "none")
+    select(h, true) :: ~style(hunter, "display", "") & style(hunter, "display", "none")
+    select(s_12, true) :: ~style(seer(12), "display", "") & style(seer(12), "display", "none")
+    select(s_13, true) :: ~style(seer(13), "display", "") & style(seer(13), "display", "none")
 
     current_config(N, X) ::
         num_player(N1) & distinct(N, N1) ==>
