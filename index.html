@@ -1,0 +1,80 @@
+<html>
+
+<!--=======================================================================-->
+
+<head>
+    <title>Hunterwolf</title>
+    <script type='text/javascript' src='http://worksheets.stanford.edu/epilog/javascript/epilog.js'></script>
+    <script type='text/javascript' src='http://worksheets.stanford.edu/worksheets/javascript/worksheets.js'></script>
+    <script>function populatesheet ()
+             {populateinnerhtmls();
+              populatetables();
+              populateoptions();
+              populatevalues();
+              populatevaluelists();
+              populateattributes();
+              populatestyles();
+              for (var i=0;i<populators.length; i++) {populators[i].call(null)};
+              document.getElementsByName('facts')[0].value = grindem(lambda.sort());
+              reposition();
+              return true}</script>
+     <script>
+         function go_to() {
+			var config = document.getElementById('get_config').innerHTML;
+			if (config == 'load') {alert('Please select a configuration!');}
+			else {
+				var l = window.location.href.split('/');
+				l.splice(-1, 1);
+				l = l.join('/');
+				l += ('/' + config + '.html');
+				window.location = l;
+		 	}
+		 }
+     </script>
+</head>
+
+<!--=======================================================================-->
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' bgcolor='#f4f6f8'
+      onload='initialize()'>
+  <center>
+    <table width='640' cellpadding='0' cellspacing='0' border='0'>
+      <tr>
+        <td width='640' height='90' align='center'>
+          <span style='font-size:48px;color:#000088;cursor:pointer;width:100%'>Werewolf</span>
+      </td>
+      </tr>
+    </table>
+  </center>
+
+  <center>
+      <p>Which configuration do you want to play?</p>
+	  <select id='choose_config' onchange='modselector(this)' style='width:100'>
+		  <option value='default'></option>
+		  <option>hunterwolf</option>
+		  <option>idiot</option>
+      </select>
+	  <button type='button' id='next' onclick='go_to()'>Play this one!</button>
+	  <span id='get_config' style='display:none'></span>
+  </center>
+
+
+<!--=======================================================================-->
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+	default
+</textarea>
+
+<textarea id='library' type='text/hrf' style='display:none'>
+	select(choose_config, X) :: Y ==> ~Y & X
+	innerhtml(get_config, X) :- X
+</textarea>
+
+<textarea name='facts' style='font-family:courier;background-color:#eeeeee' rows='48' cols='32' disabled='true'></textarea>
+
+<!--=======================================================================-->
+
+</body>
+</html>
