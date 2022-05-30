@@ -254,7 +254,7 @@
       </p>
       <p class='instruction' id='state(0,conclusion,0)'>What happend? (Pass to one of the dead players)</p>
       <p class='instruction' id='state(0,conclusion,1)'>
-          The guardian is Player <span id='con_guardian'></span>
+          The guardian is Player <span id='con_guardian'></span>, and
           <span id='con_guardian_c'>protected Player <span id='con_guardian_p'></span></span>.
           <br />
           The wolves are Player <span id='wolf_1'></span>, Player <span id='wolf_2'></span>, and Player <span id='wolf_3'></span>.
@@ -263,7 +263,7 @@
           <br />
           The witch is Player <span id='con_witch'></span>.
           The witch did <span id='con_witch_choice'></span> use the elixir.
-          <span id='con_poison'>The witch used the poison to kill Player <span id='witch_kill'></span></span>
+          <span id='con_poison'>The witch used the poison to kill Player <span id='witch_kill'></span></span>.
           <br />
           The seer is Player <span id='con_seer'></span>, and verified that Player <span id='con_seer_check'></span> is <span id='con_seer_tof'></span> a wolf.
           <br />
@@ -389,10 +389,10 @@
     style(0_dead, "display", "none") :- ~case_0_0 & ~case_0_1
     style(0_dead, "display", "none") :- ~display_dead
 
-    style(con_poison, "display", "") :- state(0,conclusion,0) & ~selected(witch_poison, 0)
-    style(con_poison, "display", "none") :- ~state(0,conclusion,0) | selected(witch_poison, 0)
-    style(con_guardian_c, "display", "") :- state(0,conclusion,0) & ~selected(guardian, 0)
-    style(con_guardian_c, "display", "none") :- ~state(0,conclusion,0) | selected(guardian, 0)
+    style(con_poison, "display", "") :- state(0,conclusion,1) & ~selected(witch_poison, 0)
+    style(con_poison, "display", "none") :- ~state(0,conclusion,1) | selected(witch_poison, 0)
+    style(con_guardian_c, "display", "") :- state(0,conclusion,1) & ~selected(guardian, 0)
+    style(con_guardian_c, "display", "none") :- ~state(0,conclusion,1) | selected(guardian, 0)
 
     click(seer_decided) :: decided
     style(seer_selecter, "display", "none") :- decided
