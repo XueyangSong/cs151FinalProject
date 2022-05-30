@@ -38,7 +38,7 @@
         }
         function generate() {
             var library = document.getElementById('lambda');
-            var ls = ['wolf', 'wolf', 'wolf', 'kingwolf', 'seer', 'witch', 'guardian', 'hunter', 'villager', 'villager', 'villager', 'villager'];
+            var ls = ['wolf', 'wolf', 'wolf', 'kingwolf', 'seer', 'witch', 'guardian', 'knight', 'villager', 'villager', 'villager', 'villager'];
             ls = shuffle(ls);
             // generate paired string
             var str = "";
@@ -93,7 +93,7 @@
       <p>Configuration:
           <br />
           Villager: 4 Villagers<br />
-          God: Guardian, Seer, Witch, Hunter<br />
+          God: Guardian, Seer, Witch, Knight<br />
           Werewolf: 3 Wolves, 1 Kingwolf<br />
           <br />
       </p>
@@ -242,8 +242,6 @@
           <br />
           This player's identity is wolf? <span id='check_identity'><span>
       </p>
-      <p class='instruction' id='state(0,hunter,0)'>Hunter open your eyes; everyone else close your eyes</p>
-      <p class='instruction' id='state(0,hunter,1)'>The status of your gun is <span id='hunter_status'></span></p>
       <p class='instruction' id='state(0,morning,0)'>It's morning!</p>
       <p class='instruction' id='state(0,morning,1)'>
           <div class='instruction' id='2_dead'><span id='2_dead_1'></span> and <span id='2_dead_2'></span> are dead.</div>
@@ -252,20 +250,18 @@
       </p>
       <p class='instruction' id='state(0,conclusion,0)'>What happend? (Pass to one of the dead players)</p>
       <p class='instruction' id='state(0,conclusion,1)'>
-          The guardian is Player <span id='con_guardian'></span>, and
-          <span id='con_guardian_c'>protected Player <span id='con_guardian_p'></span></span>.
+          The guardian is Player <span id='con_guardian'></span>
+          <span id='con_guardian_c'>, and protected Player <span id='con_guardian_p'></span></span>.
           <br />
           The wolves are Player <span id='wolf_1'></span>, Player <span id='wolf_2'></span>, and Player <span id='wolf_3'></span>.
           The kingwolf is Player <span id='wolf_king'></span>.
-          The wolves decided to kill <span id='wolf_kill'></span>.
+          The wolves decided to kill Player <span id='wolf_kill'></span>.
           <br />
           The witch is Player <span id='con_witch'></span>.
           The witch did <span id='con_witch_choice'></span> use the elixir.
           <span id='con_poison'>The witch used the poison to kill Player <span id='witch_kill'></span>.</span>
           <br />
           The seer is Player <span id='con_seer'></span>, and verified that Player <span id='con_seer_check'></span> is <span id='con_seer_tof'></span> a wolf.
-          <br />
-          The hunter is Player <span id='con_hunter'></span>, and is <span id='con_hunter_s'></span> able to shot.
       </p>
   </center>
 
@@ -283,7 +279,6 @@
     state(1,wolf,b)
     state(1,witch,b)
     state(1,seer,b)
-    state(1,hunter,b)
     state(1,morning,0)
     state(1,morning,1)
     state(1,conclusion,0)
@@ -330,7 +325,7 @@
     indicator(wolf)
     indicator(witch)
     indicator(seer)
-    indicator(hunter)
+    indicator(knight)
     indicator(morning)
     indicator(conclusion)
     binary(0)
@@ -351,8 +346,7 @@
     succ(guardian,wolf)
     succ(wolf,witch)
     succ(witch,seer)
-    succ(seer,hunter)
-    succ(hunter,morning)
+    succ(seer,morning)
     succ(morning,conclusion)
 
     display_dead :- state(0,morning,1)
@@ -397,9 +391,6 @@
     innerhtml(check_identity, true) :- decided & selected(seer, Y) & role(Y, kingwolf)
     innerhtml(check_identity, false) :- decided & selected(seer, Y) & ~role(Y, wolf) & ~role(Y, kingwolf)
 
-    innerhtml(hunter_status, up) :- selected(witch_poison, X) & role(Y, hunter) & distinct(X,Y)
-    innerhtml(hunter_status, down) :- selected(witch_poison, X) & role(X, hunter)
-
     innerhtml(2_dead_1, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(min(X, Y), Z)
     innerhtml(2_dead_2, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(max(X, Y), Z)
     innerhtml(1_dead_1, X) :- case_1_0 & selected(wolf, X)
@@ -419,8 +410,6 @@
     innerhtml(con_seer, X) :- role(X, seer)
     innerhtml(con_seer_check, X) :- selected(seer, X)
     innerhtml(con_seer_tof, not) :- selected(seer, X) & ~role(X, wolf) & ~role(X, kingwolf)
-    innerhtml(con_hunter, X) :- role(X, hunter)
-    innerhtml(con_hunter_s, not) :- selected(witch_poison, X) & role(X, hunter)
 
     select(guardian_selecter, X) :: selected(guardian, Y) ==> ~selected(guardian, Y) & selected(guardian, X)
     select(wolf_selecter, X) :: selected(wolf, Y) ==> ~selected(wolf, Y) & selected(wolf, X)
