@@ -22,6 +22,7 @@
          function go_to() {
 			var config = document.getElementById('get_config').innerHTML;
 			if (config == 'load') {alert('Please select a configuration!');}
+			else if (config.includes('default')) {alert('Please select a configuration!');}
 			else {
 				var l = window.location.href.split('/');
 				l.splice(-1, 1);
