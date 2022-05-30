@@ -27,15 +27,32 @@ select {
 }
 
 button {
-  font-size: 30px;
-}
-#next {
-  background: #000088;
   border-radius: 8px;
   color:white;
+  background: #000088;
   padding: 14px 40px;
   font-size: 40px;
-  font-family: courier
+  font-family: "Bangers";
+}
+
+#seer_decided {
+  border-radius: 8px;
+  color:white;
+  background: #000088;
+  padding: 10px 30px;
+  font-size: 30px;
+  font-family: courier;
+}
+
+
+button:disabled,
+button[disabled]{
+  border-radius: 8px;
+  padding: 14px 40px;
+  font-size: 40px;
+  font-family: "Bangers";
+  background-color: #cccccc;
+  color: #666666;
 }
 #werewolf {
   font-family: "Bangers", Times, serif;
