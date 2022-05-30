@@ -37,6 +37,9 @@
 		border-collapse: collapse;
 	}
 	</style>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&amp;display=swap" rel="stylesheet">
+
 </head>
 
 <!--=======================================================================-->
@@ -47,7 +50,7 @@
     <table width='640' cellpadding='0' cellspacing='0' border='0'>
       <tr>
         <td width='640' height='90' align='center'>
-          <span style='font-size:48px;color:#000088;cursor:pointer;width:100%'>Werewolf</span>
+          <span id="werewolf">Werewolf</span>
       </td>
       </tr>
     </table>
@@ -59,7 +62,7 @@
 		<option value='default'></option>
 		<option>hunterwolf</option>
 		<option>idiot</option>
-    </select>
+  </select><br /><br />
 	<button type='button' id='next' onclick='go_to()'>Play this one!</button>
 	<span id='get_config' style='display:none'></span>
 	<p id='hunterwolf'>
