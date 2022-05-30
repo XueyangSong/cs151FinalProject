@@ -67,114 +67,6 @@
   </center>
 
   <center>
-      <!-- <table>
-          <tr id='guardian' style='display: none'>
-              <td>
-                  <input type='checkbox' id='g_12' name='g_12' onchange='modcheck(this)'>
-                  <label for='g_12'>finished</label><br>
-              </td>
-              <td><span><b>Guardian: </b>Whom do you want to guard tonight?</span></td>
-              <td>
-                  <select onchange='modselector(this)'>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                  </select>
-              </td>
-          </tr>
-          <tr id='werewolf(12)' style='display: none'>
-              <td>
-                  <input type='checkbox' id='w_12' name='w_12' onchange='modcheck(this)'>
-                  <label for='w_12'>finished</label><br>
-              </td>
-              <td><span><b>Werewolf: </b>Whom do you want to kill tonight?</span></td>
-              <td>
-                  <select onchange='modselector(this)'>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                  </select>
-              </td>
-          </tr>
-          <tr id='witch(12)' style='display: none'>
-              <td>
-                  <input type='checkbox' id='witch_12' name='witch_12' onchange='modcheck(this)'>
-                  <label for='witch_12'>finished</label><br>
-              </td>
-              <td><span><b>Witch: </b>Player <span id="killed"></span> is killed. Do you want to save?</span></td>
-              <td>
-                  <select id='witch_choise(12)' onchange='modselector(this)'>
-                      <option>yes</option>
-                      <option>no</option>
-                  </select>
-              </td>
-              <td id='whether_poison(12)' style='display: none'><span>Do you want to poison anyone?</span></td>
-              <td id='poison_selecter(12)' style='display: none'>
-                  <select onchange='modselector(this)'>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                  </select>
-              </td>
-          </tr>
-          <tr id="hunter" style='display: none'>
-              <td>
-                  <input type='checkbox' id='h' name='h' onchange='modcheck(this)'>
-                  <label for='h'>finished</label><br>
-              </td>
-              <td><span><b>Hunter: </b>The status of your gun is <span id="hunter_status"></span></td>
-          </tr>
-          <tr id='seer(12)' style='display: none'>
-              <td>
-                  <input type='checkbox' id='s_12' name='s_12' onchange='modcheck(this)'>
-                  <label for='s_12'>finished</label><br>
-              </td>
-              <td><span><b>Seer: </b>Whom do you want to verify tonight?</span></td>
-              <td>
-                  <select onchange='modselector(this)'>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                  </select>
-              </td>
-          </tr>
-      </table> -->
       <button type='button' id='next' onclick='modbutton(this)'>next</button>
       <p id='state(0,0,1)'>Begin!</p>
       <p id='state(0,1,0)'>Pass to Player 1!</p>
@@ -204,6 +96,7 @@
 
       <p id='state(0,guardian,0)'>Guardian open your eyes; everyone else close your eyes</p>
       <p id='state(0,guardian,1)'>
+          Whom do you want to protect tonight?
           <select id='guardian_selecter' onchange='modselector(this)'>
               <option>1</option>
               <option>2</option>
@@ -282,9 +175,34 @@
           This player's identity is wolf? <span id='check_identity'><span>!
       </p>
       <p id='state(0,hunter,0)'>Hunter open your eyes; everyone else close your eyes</p>
-      <p>The status of your gun is <span id='hunter_status'></span></p>
+      <p id='state(0,hunter,1)'>The status of your gun is <span id='hunter_status'></span></p>
       <p id='state(0,hunterwolf,0)'>Hunterwolf open your eyes; everyone else close your eyes</p>
-      <p>The status of your gun is <span id='hunterwolf_status'></span></p>
+      <p id='state(0,hunterwolf,1)'>The status of your gun is <span id='hunterwolf_status'></span></p>
+      <p id='state(0,morning,0)'>It's morning!</p>
+      <p id='state(0,morning,1)'>
+          <div id='2_dead'><span id='2_dead_1'></span> and <span id='2_dead_2'></span> are dead.</div>
+          <div id='1_dead_no_elixir'><span id='dead_no_elixir'></span> is dead.</div>
+          <div id='1_dead_elixir'><span id='dead_elixir'></span> is dead.</div>
+          <div id='0_dead'>Nobody died.</div>
+      </p>
+      <p id='state(0,conclusion,0)'>What happend?</p>
+      <p id='state(0,conclusion,1)'>
+          The guardian is Player <span id='con_guardian'></span>, and protected Player <span id='con_guardian_p'></span>.
+          <br />
+          The wolves are Player <span id='wolf_1'></span>, Player <span id='wolf_2'></span>, and Player <span id='wolf_1'></span>.
+          The hunterwolf is Player <span id='wolf_hunter'></span>.
+          The wolves decided to kill <span id='wolf_kill'></span>.
+          <br />
+          The witch is Player <span id='con_witch'></span>.
+          The witch did <span id='con_witch_choice'></span> use the elixir.
+          <span id='con_poison'>The witch used the poison to kill Player <span id='witch_kill'></span></span>
+          <br />
+          The seer is Player <span id='con_seer'></span>, and verified that Player <span id='con_seer_check'></span> is <span id='con_seer_tof'></span> a wolf.
+          <br />
+          The hunter is Player <span id='con_hunter'></span>, and is <span id='con_hunter_s'></span> able to shot.
+          <br />
+          The hunterwolf is Player <span id='con_hunterwolf'></span>, and is <span id='con_hunterwolf_s'></span> able to shot.
+      </p>
   </center>
 
 
@@ -303,6 +221,8 @@
     state(1,seer,b)
     state(1,hunter,b)
     state(1,hunterwolf,b)
+    state(1,morning,0)
+    state(1,morning,1)
     state(1,conclusion,0)
 
     succ(1,2)
@@ -315,13 +235,13 @@
     transition:
     button:next
     state(X, Y, 0) => ~state(X, Y, 0) & state(X, Y, 1)
-    state(X, Y, 1) & succ(X,Z) => ~state(X,Y,1) & state(X,Z,0)
+    state(X, Y, 1) & succ(Y,Z) => ~state(X,Y,1) & state(X,Z,0)
 -->
 
 <!--=======================================================================-->
 
 <textarea id='lambda' type='text/hrf' style='display:none'>
-    state(0,wolf,0)
+    state(0,guardian,0)
     selected(guardian, 1)
     selected(wolf, 1)
     selected(witch_choice, yes)
@@ -349,6 +269,7 @@
     indicator(seer)
     indicator(hunter)
     indicator(hunterwolf)
+    indicator(morning)
     indicator(conclusion)
     binary(0)
     binary(1)
@@ -370,7 +291,10 @@
     succ(witch,seer)
     succ(seer,hunter)
     succ(hunter,hunterwolf)
-    succ(hunterwolf,conclusion)
+    succ(hunterwolf,morning)
+    succ(morning,conclusion)
+
+    display_dead :- state(0,morning,1)
 
     click(next) :: state(X,Y,1) & succ(Y,Z) ==> ~state(X,Y,1) & state(X,Z,0)
     click(next) :: state(X, Y, 0) ==> ~state(X, Y, 0) & state(X, Y, 1)
@@ -379,6 +303,21 @@
 
     style(witch_selecter, "display", "") :- selected(witch_choice, no)
     style(witch_selecter, "display", "none") :- selected(witch_choice, yes)
+
+    style(2_dead, "display", "") :- selected(witch_choice, no) & ~selected(witch_poison, 0)
+    style(2_dead, "display", "none") :- selected(witch_choice, yes)
+    style(2_dead, "display", "none") :- ~display_dead
+    style(1_dead_no_elixir, "display", "") :- selected(witch_choice, no) & selected(witch_poison, 0)
+    style(1_dead_no_elixir, "display", "none") :- selected(witch_choice, yes)
+    style(1_dead_no_elixir, "display", "none") :- ~display_dead
+    style(1_dead_elixir, "display", "") :- selected(witch_choice, yes) & selected(guardian, X) & selected(wolf, X)
+    style(1_dead_elixir, "display", "none") :- selected(witch_choice, no)
+    style(1_dead_elixir, "display", "none") :- ~display_dead
+    style(0_dead, "display", "") :- selected(witch_choice, yes) & selected(guardian, X) & ~selected(wolf, X)
+    style(0_dead, "display", "none") :- selected(witch_choice, no)
+    style(0_dead, "display", "none") :- ~display_dead
+
+    style(con_poison, "display", "") :- state(0,conclusion,0) & ~selected(witch_poison, 0)
 
     click(seer_decided) :: decided
     style(seer_selecter, "display", "none") :- decided
@@ -390,12 +329,41 @@
     innerhtml(check_identity, true) :- decided & selected(seer, Y) & role(Y, hunterwolf)
     innerhtml(check_identity, false) :- decided & selected(seer, Y) & ~role(Y, wolf) & ~role(Y, hunterwolf)
 
+    innerhtml(hunter_status, up) :- selected(witch_poison, X) & role(Y, hunter) & distinct(X,Y)
+    innerhtml(hunter_status, down) :- selected(witch_poison, X) & role(X, hunter)
+    innerhtml(hunterwolf_status, up) :- selected(witch_poison, X) & role(Y, hunterwolf) & distinct(X,Y)
+    innerhtml(hunterwolf_status, down) :- selected(witch_poison, X) & role(X, hunterwolf)
+
+    innerhtml(2_dead_1, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(min(X, Y), Z)
+    innerhtml(2_dead_2, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(max(X, Y), Z)
+    innerhtml(dead_no_elixir, X) :- selected(wolf, X)
+    innerhtml(dead_elixir, X) :- selected(wolf, X)
+
+    innerhtml(con_guardian, X) :- role(guardian, X)
+    innerhtml(con_guardian_p, X) :- selected(guardian, X)
+    innerhtml(wolf_1, X) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & evaluate(min(X, Y, Z), X)
+    innerhtml(wolf_2, Y) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & ~evaluate(min(X, Y, Z), Y) & ~evaluate(max(X, Y, Z), Y)
+    innerhtml(wolf_3, Z) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & evaluate(max(X, Y, Z), X)
+    innerhtml(wolf_hunter, X) :- role(X, hunterwolf)
+    innerhtml(wolf_kill, X) :- selected(wolf, X)
+    innerhtml(con_witch, X) :- role(X, witch)
+    innerhtml(con_witch_choice, not) :- selected(witch_choice, no)
+    innerhtml(witch_kill, X) :- selected(witch_poison, X)
+    innerhtml(con_seer, X) :- role(X, seer)
+    innerhtml(con_seer_check, X) :- selected(seer, X)
+    innerhtml(con_seer_tof, not) :- selected(seer, X) & ~role(X, wolf) & ~role(Y, hunterwolf)
+    innerhtml(con_hunter, X) :- role(X, hunter)
+    innerhtml(con_hunter_s, not) :- selected(witch_poison, X) & role(X, hunter)
+    innerhtml(con_hunterwolf, X) :- role(X, hunterwolf)
+    innerhtml(con_hunterwolf_s, not) :- selected(witch_poison, X) & role(X, hunterwolf)
+
     select(guardian_selecter, X) :: selected(guardian, Y) ==> ~selected(guardian, Y) & selected(guardian, X)
     select(wolf_selecter, X) :: selected(wolf, Y) ==> ~selected(wolf, Y) & selected(wolf, X)
     select(witch_choice, X) :: selected(witch_choice, Y) ==> ~selected(witch_choice, Y) & selected(witch_choice, X)
     select(witch_choice, X) :: selected(witch_poison, Y) ==> ~selected(witch_poison, Y) & selected(witch_poison, 0)
     select(witch_selecter, X) :: selected(witch_poison, Y) ==> ~selected(witch_poison, Y) & selected(witch_poison, X)
     select(seer_selecter, X) :: selected(seer, Y) ==> ~selected(seer, Y) & selected(seer, X)
+
 
 </textarea>
 
