@@ -98,6 +98,7 @@
       <p id='state(0,guardian,1)'>
           Whom do you want to protect tonight?
           <select id='guardian_selecter' onchange='modselector(this)'>
+              <option value='0'>nobody</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -181,15 +182,15 @@
       <p id='state(0,morning,0)'>It's morning!</p>
       <p id='state(0,morning,1)'>
           <div id='2_dead'><span id='2_dead_1'></span> and <span id='2_dead_2'></span> are dead.</div>
-          <div id='1_dead_no_elixir'><span id='dead_no_elixir'></span> is dead.</div>
-          <div id='1_dead_elixir'><span id='dead_elixir'></span> is dead.</div>
+          <div id='1_dead'><span id='1_dead_1'></span> is dead.</div>
           <div id='0_dead'>Nobody died.</div>
       </p>
       <p id='state(0,conclusion,0)'>What happend?</p>
       <p id='state(0,conclusion,1)'>
-          The guardian is Player <span id='con_guardian'></span>, and protected Player <span id='con_guardian_p'></span>.
+          The guardian is Player <span id='con_guardian'></span>
+          <span id='con_guardian_c'>protected Player <span id='con_guardian_p'></span></span>.
           <br />
-          The wolves are Player <span id='wolf_1'></span>, Player <span id='wolf_2'></span>, and Player <span id='wolf_1'></span>.
+          The wolves are Player <span id='wolf_1'></span>, Player <span id='wolf_2'></span>, and Player <span id='wolf_3'></span>.
           The hunterwolf is Player <span id='wolf_hunter'></span>.
           The wolves decided to kill <span id='wolf_kill'></span>.
           <br />
@@ -242,7 +243,7 @@
 
 <textarea id='lambda' type='text/hrf' style='display:none'>
     state(0,guardian,0)
-    selected(guardian, 1)
+    selected(guardian, 0)
     selected(wolf, 1)
     selected(witch_choice, yes)
     selected(witch_poison, 0)
@@ -304,20 +305,27 @@
     style(witch_selecter, "display", "") :- selected(witch_choice, no)
     style(witch_selecter, "display", "none") :- selected(witch_choice, yes)
 
-    style(2_dead, "display", "") :- selected(witch_choice, no) & ~selected(witch_poison, 0)
-    style(2_dead, "display", "none") :- selected(witch_choice, yes)
+    case_0_0 :- selected(witch_choice, yes) & selected(guardian, X) & ~selected(wolf, X)
+    case_0_1 :- selected(witch_choice, no) & selected(witch_poison, 0) & selected(guardian, X) & selected(wolf, X)
+    case_1_0 :- selected(witch_choice, yes) & selected(guardian, X) & selected(wolf, X)
+    case_1_1 :- selected(witch_choice, no) & selected(witch_poison, 0) & selected(guardian, X) & ~selected(wolf, X)
+    case_1_2 :- selected(witch_choice, no) & ~selected(witch_poison, 0) & selected(guardian, X) & selected(wolf, X)
+    case_2 :- selected(witch_choice, no) & ~selected(witch_poison, 0) & selected(guardian, X) & ~selected(wolf, X)
+
+    style(2_dead, "display", "") :- case_2
+    style(2_dead, "display", "none") :- ~case_2
     style(2_dead, "display", "none") :- ~display_dead
-    style(1_dead_no_elixir, "display", "") :- selected(witch_choice, no) & selected(witch_poison, 0)
-    style(1_dead_no_elixir, "display", "none") :- selected(witch_choice, yes)
-    style(1_dead_no_elixir, "display", "none") :- ~display_dead
-    style(1_dead_elixir, "display", "") :- selected(witch_choice, yes) & selected(guardian, X) & selected(wolf, X)
-    style(1_dead_elixir, "display", "none") :- selected(witch_choice, no)
-    style(1_dead_elixir, "display", "none") :- ~display_dead
-    style(0_dead, "display", "") :- selected(witch_choice, yes) & selected(guardian, X) & ~selected(wolf, X)
-    style(0_dead, "display", "none") :- selected(witch_choice, no)
+    style(1_dead, "display", "") :- case_1_0 | case_1_1 | case_1_2
+    style(1_dead, "display", "none") :- ~case_1_0 & ~case_1_1 & ~case_1_2
+    style(1_dead, "display", "none") :- ~display_dead
+    style(0_dead, "display", "") :- case_0_0 | case_0_1
+    style(0_dead, "display", "none") :- ~case_0_0 & ~case_0_1
     style(0_dead, "display", "none") :- ~display_dead
 
     style(con_poison, "display", "") :- state(0,conclusion,0) & ~selected(witch_poison, 0)
+    style(con_poison, "display", "none") :- ~state(0,conclusion,0) | selected(witch_poison, 0)
+    style(con_guardian_c, "display", "") :- state(0,conclusion,0) & ~selected(guardian, 0)
+    style(con_guardian_c, "display", "none") :- ~state(0,conclusion,0) | selected(guardian, 0)
 
     click(seer_decided) :: decided
     style(seer_selecter, "display", "none") :- decided
@@ -336,14 +344,16 @@
 
     innerhtml(2_dead_1, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(min(X, Y), Z)
     innerhtml(2_dead_2, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(max(X, Y), Z)
-    innerhtml(dead_no_elixir, X) :- selected(wolf, X)
+    innerhtml(1_dead_1, X) :- case_1_0 & selected(wolf, X)
+    innerhtml(1_dead_1, X) :- case_1_1 & selected(wolf, X)
+    innerhtml(1_dead_1, X) :- case_1_2 & selected(witch_poison, X)
     innerhtml(dead_elixir, X) :- selected(wolf, X)
 
-    innerhtml(con_guardian, X) :- role(guardian, X)
+    innerhtml(con_guardian, X) :- role(X, guardian)
     innerhtml(con_guardian_p, X) :- selected(guardian, X)
     innerhtml(wolf_1, X) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & evaluate(min(X, Y, Z), X)
     innerhtml(wolf_2, Y) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & ~evaluate(min(X, Y, Z), Y) & ~evaluate(max(X, Y, Z), Y)
-    innerhtml(wolf_3, Z) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & evaluate(max(X, Y, Z), X)
+    innerhtml(wolf_3, Z) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & evaluate(max(X, Y, Z), Z)
     innerhtml(wolf_hunter, X) :- role(X, hunterwolf)
     innerhtml(wolf_kill, X) :- selected(wolf, X)
     innerhtml(con_witch, X) :- role(X, witch)
@@ -351,7 +361,7 @@
     innerhtml(witch_kill, X) :- selected(witch_poison, X)
     innerhtml(con_seer, X) :- role(X, seer)
     innerhtml(con_seer_check, X) :- selected(seer, X)
-    innerhtml(con_seer_tof, not) :- selected(seer, X) & ~role(X, wolf) & ~role(Y, hunterwolf)
+    innerhtml(con_seer_tof, not) :- selected(seer, X) & ~role(X, wolf) & ~role(X, hunterwolf)
     innerhtml(con_hunter, X) :- role(X, hunter)
     innerhtml(con_hunter_s, not) :- selected(witch_poison, X) & role(X, hunter)
     innerhtml(con_hunterwolf, X) :- role(X, hunterwolf)
