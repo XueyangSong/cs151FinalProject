@@ -3,7 +3,7 @@
 <!--=======================================================================-->
 
 <head>
-    <title>Werewolf</title>
+    <title>Hunterwolf</title>
     <script type='text/javascript' src='http://worksheets.stanford.edu/epilog/javascript/epilog.js'></script>
     <script type='text/javascript' src='http://worksheets.stanford.edu/worksheets/javascript/worksheets.js'></script>
     <script>function populatesheet ()
@@ -67,6 +67,13 @@
   </center>
 
   <center>
+      <p>Configuration:
+          <br />
+          Villager: 4 Villagers<br />
+          God: Guardian, Seer, Witch, Hunter<br />
+          Werewolf: 3 Wolves, 1 Hunterwolf<br />
+          <br />
+      </p>
       <button type='button' id='next' onclick='modbutton(this)'>next</button>
       <p id='state(0,0,1)'>Begin!</p>
       <p id='state(0,1,0)'>Pass to Player 1!</p>
@@ -242,7 +249,7 @@
 <!--=======================================================================-->
 
 <textarea id='lambda' type='text/hrf' style='display:none'>
-    state(0,guardian,0)
+    state(0,0,1)
     selected(guardian, 0)
     selected(wolf, 1)
     selected(witch_choice, yes)
