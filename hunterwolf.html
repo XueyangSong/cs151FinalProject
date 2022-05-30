@@ -47,9 +47,32 @@
             }
             library.innerHTML += str;
             initialize();
+            addimage('char(1)')
+            addimage('char(2)')
+            addimage('char(3)')
+            addimage('char(4)')
+            addimage('char(5)')
+            addimage('char(6)')
+            addimage('char(7)')
+            addimage('char(8)')
+            addimage('char(9)')
+            addimage('char(10)')
+            addimage('char(11)')
+            addimage('char(12)')
             return true;
         }
+        function addimage(id) {
+            var img = document.createElement("img");
+            var rolespan = document.getElementById(id);
+            var role = rolespan.textContent
+            img.src = "img/"+role+".jpeg"
+            // img.style = ""
+            var src = document.getElementById("pic:"+id);
+            src.appendChild(img);
+        }
      </script>
+     <link rel="stylesheet" href="style.css">
+     <link href="https://fonts.googleapis.com/css2?family=Bangers&amp;display=swap" rel="stylesheet">
 </head>
 
 <!--=======================================================================-->
@@ -60,7 +83,7 @@
     <table width='640' cellpadding='0' cellspacing='0' border='0'>
       <tr>
         <td width='640' height='90' align='center'>
-          <span style='font-size:48px;color:#000088;cursor:pointer;width:100%'>Werewolf</span>
+          <span id='werewolf'>Werewolf</span>
       </td>
       </tr>
     </table>
@@ -75,34 +98,71 @@
           <br />
       </p>
       <button type='button' id='next' onclick='modbutton(this)'>next</button>
-      <p id='state(0,0,1)'>Begin!</p>
-      <p id='state(0,1,0)'>Pass to Player 1!</p>
-      <p id='state(0,1,1)'>Your character is <span id='char(1)'></span></p>
-      <p id='state(0,2,0)'>Pass to Player 2!</p>
-      <p id='state(0,2,1)'>Your character is <span id='char(2)'></span></p>
-      <p id='state(0,3,0)'>Pass to Player 3!</p>
-      <p id='state(0,3,1)'>Your character is <span id='char(3)'></span></p>
-      <p id='state(0,4,0)'>Pass to Player 4!</p>
-      <p id='state(0,4,1)'>Your character is <span id='char(4)'></span></p>
-      <p id='state(0,5,0)'>Pass to Player 5!</p>
-      <p id='state(0,5,1)'>Your character is <span id='char(5)'></span></p>
-      <p id='state(0,6,0)'>Pass to Player 6!</p>
-      <p id='state(0,6,1)'>Your character is <span id='char(6)'></span></p>
-      <p id='state(0,7,0)'>Pass to Player 7!</p>
-      <p id='state(0,7,1)'>Your character is <span id='char(7)'></span></p>
-      <p id='state(0,8,0)'>Pass to Player 8!</p>
-      <p id='state(0,8,1)'>Your character is <span id='char(8)'></span></p>
-      <p id='state(0,9,0)'>Pass to Player 9!</p>
-      <p id='state(0,9,1)'>Your character is <span id='char(9)'></span></p>
-      <p id='state(0,10,0)'>Pass to Player 10!</p>
-      <p id='state(0,10,1)'>Your character is <span id='char(10)'></span></p>
-      <p id='state(0,11,0)'>Pass to Player 11!</p>
-      <p id='state(0,11,1)'>Your character is <span id='char(11)'></span></p>
-      <p id='state(0,12,0)'>Pass to Player 12!</p>
-      <p id='state(0,12,1)'>Your character is <span id='char(12)'></span></p>
+      <p class='instruction' id='state(0,0,1)'>Begin!</p>
+      <p class='instruction' id='state(0,1,0)'>Pass to Player 1!</p>
+      <p class='instruction' id='state(0,1,1)'>
+        Your character is <span id='char(1)'></span>
+        <br>
+        <span id='pic:char(1)'><span>
+      </p>
+      <p class='instruction' id='state(0,2,0)'>Pass to Player 2!</p>
+      <p class='instruction' id='state(0,2,1)'>
+        Your character is <span id='char(2)'></span>
+        <br>
+        <span id='pic:char(2)'><span></p>
+      <p class='instruction' id='state(0,3,0)'>Pass to Player 3!</p>
+      <p class='instruction' id='state(0,3,1)'>
+        Your character is <span id='char(3)'></span>
+        <br>
+        <span id='pic:char(3)'><span></p>
+      <p class='instruction' id='state(0,4,0)'>Pass to Player 4!</p>
+      <p class='instruction' id='state(0,4,1)'>
+        Your character is <span id='char(4)'></span>
+        <br>
+        <span id='pic:char(4)'><span></p>
+      <p class='instruction' id='state(0,5,0)'>Pass to Player 5!</p>
+      <p class='instruction' id='state(0,5,1)'>
+        Your character is <span id='char(5)'></span>
+        <br>
+        <span id='pic:char(5)'><span></p>
+      <p class='instruction' id='state(0,6,0)'>Pass to Player 6!</p>
+      <p class='instruction' id='state(0,6,1)'>
+        Your character is <span id='char(6)'></span>
+        <br>
+        <span id='pic:char(6)'><span></p>
+      <p class='instruction' id='state(0,7,0)'>Pass to Player 7!</p>
+      <p class='instruction' id='state(0,7,1)'>
+        Your character is <span id='char(7)'></span>
+        <br>
+        <span id='pic:char(7)'><span></p>
+      <p class='instruction' id='state(0,8,0)'>Pass to Player 8!</p>
+      <p class='instruction' id='state(0,8,1)'>
+        Your character is <span id='char(8)'></span>
+        <br>
+        <span id='pic:char(8)'><span></p>
+      <p class='instruction' id='state(0,9,0)'>Pass to Player 9!</p>
+      <p class='instruction' id='state(0,9,1)'>
+        Your character is <span id='char(9)'></span>
+        <br>
+        <span id='pic:char(9)'><span></p>
+      <p class='instruction' id='state(0,10,0)'>Pass to Player 10!</p>
+      <p class='instruction' id='state(0,10,1)'>
+        Your character is <span id='char(10)'></span>
+        <br>
+        <span id='pic:char(10)'><span></p>
+      <p class='instruction' id='state(0,11,0)'>Pass to Player 11!</p>
+      <p class='instruction' id='state(0,11,1)'>
+        Your character is <span id='char(11)'></span>
+        <br>
+        <span id='pic:char(11)'><span></p>
+      <p class='instruction' id='state(0,12,0)'>Pass to Player 12!</p>
+      <p class='instruction' id='state(0,12,1)'>
+        Your character is <span id='char(12)'></span>
+        <br>
+        <span id='pic:char(12)'><span></p>
 
-      <p id='state(0,guardian,0)'>Guardian open your eyes; everyone else close your eyes</p>
-      <p id='state(0,guardian,1)'>
+      <p class='instruction' id='state(0,guardian,0)'>Guardian open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,guardian,1)'>
           Whom do you want to protect tonight?
           <select id='guardian_selecter' onchange='modselector(this)'>
               <option value='0'>nobody</option>
@@ -120,8 +180,8 @@
               <option>12</option>
           </select>
       </p>
-      <p id='state(0,wolf,0)'>Wolves open your eyes; everyone else close your eyes</p>
-      <p id='state(0,wolf,1)'>
+      <p class='instruction' id='state(0,wolf,0)'>Wolves open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,wolf,1)'>
           Whom do you want to kill tonight?
           <select id='wolf_selecter' onchange='modselector(this)'>
               <option>1</option>
@@ -138,8 +198,8 @@
               <option>12</option>
           </select>
       </p>
-      <p id='state(0,witch,0)'>Witch open your eyes; everyone else close your eyes</p>
-      <p id='state(0,witch,1)'>
+      <p class='instruction' id='state(0,witch,0)'>Witch open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,witch,1)'>
           Player <span id="killed"></span> is killed. Do you want to save?</span>
           <select id='witch_choice' onchange='modselector(this)'>
               <option>yes</option>
@@ -161,8 +221,8 @@
               <option>12</option>
           </select>
       </p>
-      <p id='state(0,seer,0)'>Seer open your eyes; everyone else close your eyes</p>
-      <p id='state(0,seer,1)'>
+      <p class='instruction' id='state(0,seer,0)'>Seer open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,seer,1)'>
           Whose identity do you want to verify tonight?
           <select id='seer_selecter' onchange='modselector(this)'>
               <option>1</option>
@@ -180,20 +240,20 @@
           </select>
           <button type='button' id='seer_decided' onclick='modbutton(this)'>decided</button>
           <br />
-          This player's identity is wolf? <span id='check_identity'><span>!
+          This player's identity is wolf? <span id='check_identity'><span>
       </p>
-      <p id='state(0,hunter,0)'>Hunter open your eyes; everyone else close your eyes</p>
-      <p id='state(0,hunter,1)'>The status of your gun is <span id='hunter_status'></span></p>
-      <p id='state(0,hunterwolf,0)'>Hunterwolf open your eyes; everyone else close your eyes</p>
-      <p id='state(0,hunterwolf,1)'>The status of your gun is <span id='hunterwolf_status'></span></p>
-      <p id='state(0,morning,0)'>It's morning!</p>
-      <p id='state(0,morning,1)'>
-          <div id='2_dead'><span id='2_dead_1'></span> and <span id='2_dead_2'></span> are dead.</div>
-          <div id='1_dead'><span id='1_dead_1'></span> is dead.</div>
-          <div id='0_dead'>Nobody died.</div>
+      <p class='instruction' id='state(0,hunter,0)'>Hunter open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,hunter,1)'>The status of your gun is <span id='hunter_status'></span></p>
+      <p class='instruction' id='state(0,hunterwolf,0)'>Hunterwolf open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,hunterwolf,1)'>The status of your gun is <span id='hunterwolf_status'></span></p>
+      <p class='instruction' id='state(0,morning,0)'>It's morning!</p>
+      <p class='instruction' id='state(0,morning,1)'>
+          <div class='instruction' id='2_dead'><span id='2_dead_1'></span> and <span id='2_dead_2'></span> are dead.</div>
+          <div class='instruction' id='1_dead'><span id='1_dead_1'></span> is dead.</div>
+          <div class='instruction' id='0_dead'>Nobody died.</div>
       </p>
-      <p id='state(0,conclusion,0)'>What happend?</p>
-      <p id='state(0,conclusion,1)'>
+      <p class='instruction' id='state(0,conclusion,0)'>What happend? (Pass to one of the dead players)</p>
+      <p class='instruction' id='state(0,conclusion,1)'>
           The guardian is Player <span id='con_guardian'></span>
           <span id='con_guardian_c'>protected Player <span id='con_guardian_p'></span></span>.
           <br />

@@ -1,0 +1,47 @@
+p {
+  /* color: red; */
+  font-size: 14;
+  font-family: courier;
+  color: gray;
+}
+
+body {
+  background-image: url('img/mist.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+img {
+  width:300px;height:300px;
+}
+
+.instruction {
+  font-size:30;
+  font-family: courier;
+  color: black;
+}
+
+select {
+  font-size: 30;
+}
+
+button {
+  font-size: 30px;
+}
+#next {
+  background: #000088;
+  border-radius: 8px;
+  color:white;
+  padding: 14px 40px;
+  font-size: 40px;
+  font-family: courier
+}
+#werewolf {
+  font-family: "Bangers", Times, serif;
+  /* font-size: 2em; */
+  font-size:148px;
+  color:#000088;
+  cursor:pointer;
+  width:100%
+}
