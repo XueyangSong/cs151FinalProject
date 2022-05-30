@@ -1,0 +1,491 @@
+<html>
+
+<!--=======================================================================-->
+
+<head>
+    <title>Hunterwolf</title>
+    <script type='text/javascript' src='./epilog.js'></script>
+    <script type='text/javascript' src='./worksheets.js'></script>
+    <script>function populatesheet ()
+             {populateinnerhtmls();
+              populatetables();
+              populateoptions();
+              populatevalues();
+              populatevaluelists();
+              populateattributes();
+              populatestyles();
+              for (var i=0;i<populators.length; i++) {populators[i].call(null)};
+              document.getElementsByName('facts')[0].value = grindem(lambda.sort());
+              reposition();
+              return true}</script>
+     <script>
+         function shuffle(array) {
+            let currentIndex = array.length,  randomIndex;
+
+            // While there remain elements to shuffle.
+            while (currentIndex != 0) {
+
+             // Pick a remaining element.
+             randomIndex = Math.floor(Math.random() * currentIndex);
+             currentIndex--;
+
+             // And swap it with the current element.
+             [array[currentIndex], array[randomIndex]] = [
+               array[randomIndex], array[currentIndex]];
+            }
+
+            return array;
+        }
+        function generate() {
+            var library = document.getElementById('lambda');
+            var ls = ['admirer', 'wolf', 'wolf', 'wolf', 'hunterwolf', 'seer', 'witch', 'guardian', 'hunter', 'villager', 'villager', 'villager', 'villager'];
+            ls = shuffle(ls);
+            // generate paired string
+            var str = "";
+            for (var i = 0; i < 13; i++) {
+                str += `role(${i+1}, ${ls[i]}) `;
+            }
+            library.innerHTML += str;
+            initialize();
+            addimage('char(1)')
+            addimage('char(2)')
+            addimage('char(3)')
+            addimage('char(4)')
+            addimage('char(5)')
+            addimage('char(6)')
+            addimage('char(7)')
+            addimage('char(8)')
+            addimage('char(9)')
+            addimage('char(10)')
+            addimage('char(11)')
+            addimage('char(12)')
+            addimage('char(13)')
+            return true;
+        }
+        function addimage(id) {
+            var img = document.createElement("img");
+            var rolespan = document.getElementById(id);
+            var role = rolespan.textContent
+            img.src = "img/"+role+".jpeg"
+            // img.style = ""
+            var src = document.getElementById("pic:"+id);
+            src.appendChild(img);
+        }
+     </script>
+     <link rel="stylesheet" href="style.css">
+     <link href="https://fonts.googleapis.com/css2?family=Bangers&amp;display=swap" rel="stylesheet">
+</head>
+
+<!--=======================================================================-->
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' bgcolor='#f4f6f8'
+      onload='generate()'>
+  <center>
+    <table width='640' cellpadding='0' cellspacing='0' border='0'>
+      <tr>
+        <td width='640' height='90' align='center'>
+          <span id='werewolf'>Werewolf</span>
+      </td>
+      </tr>
+    </table>
+  </center>
+
+  <center>
+      <p>Configuration:
+          <br />
+          Villager: 4 Villagers, 1 Admirer<br />
+          God: Guardian, Seer, Witch, Hunter<br />
+          Werewolf: 3 Wolves, 1 Hunterwolf<br />
+          <br />
+      </p>
+      <button type='button' id='next' onclick='modbutton(this)'>next</button>
+      <p class='instruction' id='state(0,0,1)'>Begin!</p>
+      <p class='instruction' id='state(0,1,0)'>Pass to Player 1!</p>
+      <p class='instruction' id='state(0,1,1)'>
+        Your character is <span id='char(1)'></span>
+        <br>
+        <span id='pic:char(1)'><span>
+      </p>
+      <p class='instruction' id='state(0,2,0)'>Pass to Player 2!</p>
+      <p class='instruction' id='state(0,2,1)'>
+        Your character is <span id='char(2)'></span>
+        <br>
+        <span id='pic:char(2)'><span></p>
+      <p class='instruction' id='state(0,3,0)'>Pass to Player 3!</p>
+      <p class='instruction' id='state(0,3,1)'>
+        Your character is <span id='char(3)'></span>
+        <br>
+        <span id='pic:char(3)'><span></p>
+      <p class='instruction' id='state(0,4,0)'>Pass to Player 4!</p>
+      <p class='instruction' id='state(0,4,1)'>
+        Your character is <span id='char(4)'></span>
+        <br>
+        <span id='pic:char(4)'><span></p>
+      <p class='instruction' id='state(0,5,0)'>Pass to Player 5!</p>
+      <p class='instruction' id='state(0,5,1)'>
+        Your character is <span id='char(5)'></span>
+        <br>
+        <span id='pic:char(5)'><span></p>
+      <p class='instruction' id='state(0,6,0)'>Pass to Player 6!</p>
+      <p class='instruction' id='state(0,6,1)'>
+        Your character is <span id='char(6)'></span>
+        <br>
+        <span id='pic:char(6)'><span></p>
+      <p class='instruction' id='state(0,7,0)'>Pass to Player 7!</p>
+      <p class='instruction' id='state(0,7,1)'>
+        Your character is <span id='char(7)'></span>
+        <br>
+        <span id='pic:char(7)'><span></p>
+      <p class='instruction' id='state(0,8,0)'>Pass to Player 8!</p>
+      <p class='instruction' id='state(0,8,1)'>
+        Your character is <span id='char(8)'></span>
+        <br>
+        <span id='pic:char(8)'><span></p>
+      <p class='instruction' id='state(0,9,0)'>Pass to Player 9!</p>
+      <p class='instruction' id='state(0,9,1)'>
+        Your character is <span id='char(9)'></span>
+        <br>
+        <span id='pic:char(9)'><span></p>
+      <p class='instruction' id='state(0,10,0)'>Pass to Player 10!</p>
+      <p class='instruction' id='state(0,10,1)'>
+        Your character is <span id='char(10)'></span>
+        <br>
+        <span id='pic:char(10)'><span></p>
+      <p class='instruction' id='state(0,11,0)'>Pass to Player 11!</p>
+      <p class='instruction' id='state(0,11,1)'>
+        Your character is <span id='char(11)'></span>
+        <br>
+        <span id='pic:char(11)'><span></p>
+      <p class='instruction' id='state(0,12,0)'>Pass to Player 12!</p>
+      <p class='instruction' id='state(0,12,1)'>
+        Your character is <span id='char(12)'></span>
+        <br>
+        <span id='pic:char(12)'><span></p>
+      <p class='instruction' id='state(0,13,0)'>Pass to Player 13!</p>
+      <p class='instruction' id='state(0,13,1)'>
+        Your character is <span id='char(13)'></span>
+        <br>
+        <span id='pic:char(13)'><span></p>
+
+      <p class='instruction' id='state(0,admirer,0)'>Admirer open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,admirer,1)'>
+          Whom do you want to admire for this game?
+          <select id='admirer_selecter' onchange='modselector(this)'>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+          </select>
+      </p>
+      <p class='instruction' id='state(0,guardian,0)'>Guardian open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,guardian,1)'>
+          Whom do you want to protect tonight?
+          <select id='guardian_selecter' onchange='modselector(this)'>
+              <option value='0'>nobody</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+          </select>
+      </p>
+      <p class='instruction' id='state(0,wolf,0)'>Wolves open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,wolf,1)'>
+          Whom do you want to kill tonight?
+          <select id='wolf_selecter' onchange='modselector(this)'>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+          </select>
+      </p>
+      <p class='instruction' id='state(0,witch,0)'>Witch open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,witch,1)'>
+          Player <span id="killed"></span> is killed. Do you want to save?</span>
+          <select id='witch_choice' onchange='modselector(this)'>
+              <option>yes</option>
+              <option>no</option>
+          </select>
+          <select id='witch_selecter' onchange='modselector(this)' style='display:none'>
+              <option value='0'>nobody</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+          </select>
+      </p>
+      <p class='instruction' id='state(0,seer,0)'>Seer open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,seer,1)'>
+          Whose identity do you want to verify tonight?
+          <select id='seer_selecter' onchange='modselector(this)'>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+          </select>
+          <button type='button' id='seer_decided' onclick='modbutton(this)'>decided</button>
+          <br />
+          This player's identity is wolf? <span id='check_identity'><span>
+      </p>
+      <p class='instruction' id='state(0,hunter,0)'>Hunter open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,hunter,1)'>The status of your gun is <span id='hunter_status'></span></p>
+      <p class='instruction' id='state(0,hunterwolf,0)'>Hunterwolf open your eyes; everyone else close your eyes</p>
+      <p class='instruction' id='state(0,hunterwolf,1)'>The status of your gun is <span id='hunterwolf_status'></span></p>
+      <p class='instruction' id='state(0,morning,0)'>It's morning!</p>
+      <p class='instruction' id='state(0,morning,1)'>
+          <div class='instruction' id='2_dead'><span id='2_dead_1'></span> and <span id='2_dead_2'></span> are dead.</div>
+          <div class='instruction' id='1_dead'><span id='1_dead_1'></span> is dead.</div>
+          <div class='instruction' id='0_dead'>Nobody died.</div>
+      </p>
+      <p class='instruction' id='state(0,conclusion,0)'>What happend? (Pass to one of the dead players)</p>
+      <p class='instruction' id='state(0,conclusion,1)'>
+          The admirer is Player <span id='con_admirer'></span>, and chose Player <span id='con_admirer_c'></span> as the model.
+          <br />
+          The guardian is Player <span id='con_guardian'></span>
+          <span id='con_guardian_c'>, and protected Player <span id='con_guardian_p'></span></span>.
+          <br />
+          The wolves are Player <span id='wolf_1'></span>, Player <span id='wolf_2'></span>, and Player <span id='wolf_3'></span>.
+          The hunterwolf is Player <span id='wolf_hunter'></span>.
+          The wolves decided to kill Player <span id='wolf_kill'></span>.
+          <br />
+          The witch is Player <span id='con_witch'></span>.
+          The witch did <span id='con_witch_choice'></span> use the elixir.
+          <span id='con_poison'>The witch used the poison to kill Player <span id='witch_kill'></span>.</span>
+          <br />
+          The seer is Player <span id='con_seer'></span>, and verified that Player <span id='con_seer_check'></span> is <span id='con_seer_tof'></span> a wolf.
+          <br />
+          The hunter is Player <span id='con_hunter'></span>, and is <span id='con_hunter_s'></span> able to shot.
+          <br />
+          The hunterwolf is Player <span id='con_hunterwolf'></span>, and is <span id='con_hunterwolf_s'></span> able to shot.
+      </p>
+  </center>
+
+
+<!--=======================================================================-->
+<!--
+    state(0,0,1)      select configuration
+    state(0,1,0)      1st player  blank page
+    state(0,1,1)      1st player  character page
+    ...
+    state(0,n,b)      nth player   0:blank   1:character
+
+    state(1,guardian,0)     guardian   blank page
+    state(1,guardian,1)     guardian   character page
+    state(1,wolf,b)
+    state(1,witch,b)
+    state(1,seer,b)
+    state(1,hunter,b)
+    state(1,hunterwolf,b)
+    state(1,morning,0)
+    state(1,morning,1)
+    state(1,conclusion,0)
+
+    succ(1,2)
+    ...
+    succ(11,12)
+    succ(12, 13)
+    succ(13, guardian)
+    ...
+
+
+    transition:
+    button:next
+    state(X, Y, 0) => ~state(X, Y, 0) & state(X, Y, 1)
+    state(X, Y, 1) & succ(Y,Z) => ~state(X,Y,1) & state(X,Z,0)
+-->
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+    state(0,0,1)
+    selected(admirer, 1)
+    selected(guardian, 0)
+    selected(wolf, 1)
+    selected(witch_choice, yes)
+    selected(witch_poison, 0)
+    selected(seer, 1)
+</textarea>
+
+<textarea id='library' type='text/hrf' style='display:none'>
+    indicator(0)
+    indicator(1)
+    indicator(2)
+    indicator(3)
+    indicator(4)
+    indicator(5)
+    indicator(6)
+    indicator(7)
+    indicator(8)
+    indicator(9)
+    indicator(10)
+    indicator(11)
+    indicator(12)
+    indicator(13)
+    indicator(admirer)
+    indicator(guardian)
+    indicator(wolf)
+    indicator(witch)
+    indicator(seer)
+    indicator(hunter)
+    indicator(hunterwolf)
+    indicator(morning)
+    indicator(conclusion)
+    binary(0)
+    binary(1)
+    succ(0,1)
+    succ(1,2)
+    succ(2,3)
+    succ(3,4)
+    succ(4,5)
+    succ(5,6)
+    succ(6,7)
+    succ(7,8)
+    succ(8,9)
+    succ(9,10)
+    succ(10,11)
+    succ(11,12)
+    succ(12,13)
+    succ(13,admirer)
+    succ(admirer,guardian)
+    succ(guardian,wolf)
+    succ(wolf,witch)
+    succ(witch,seer)
+    succ(seer,hunter)
+    succ(hunter,hunterwolf)
+    succ(hunterwolf,morning)
+    succ(morning,conclusion)
+
+    display_dead :- state(0,morning,1)
+
+    click(next) :: state(X,Y,1) & succ(Y,Z) ==> ~state(X,Y,1) & state(X,Z,0)
+    click(next) :: state(X, Y, 0) ==> ~state(X, Y, 0) & state(X, Y, 1)
+    style(state(X,Y,B), "display", "") :- state(X,Y,B)
+    style(state(X,Y,B), "display", "none") :- indicator(X) & indicator(Y) & binary(B) & ~state(X,Y,B)
+
+    style(witch_selecter, "display", "") :- selected(witch_choice, no)
+    style(witch_selecter, "display", "none") :- selected(witch_choice, yes)
+
+    case_0_0 :- selected(witch_choice, yes) & selected(guardian, X) & ~selected(wolf, X)
+    case_0_1 :- selected(witch_choice, no) & selected(witch_poison, 0) & selected(guardian, X) & selected(wolf, X)
+    case_1_0 :- selected(witch_choice, yes) & selected(guardian, X) & selected(wolf, X)
+    case_1_1 :- selected(witch_choice, no) & selected(witch_poison, 0) & selected(guardian, X) & ~selected(wolf, X)
+    case_1_2 :- selected(witch_choice, no) & ~selected(witch_poison, 0) & selected(guardian, X) & selected(wolf, X)
+    case_2 :- selected(witch_choice, no) & ~selected(witch_poison, 0) & selected(guardian, X) & ~selected(wolf, X)
+
+    style(2_dead, "display", "") :- case_2
+    style(2_dead, "display", "none") :- ~case_2
+    style(2_dead, "display", "none") :- ~display_dead
+    style(1_dead, "display", "") :- case_1_0 | case_1_1 | case_1_2
+    style(1_dead, "display", "none") :- ~case_1_0 & ~case_1_1 & ~case_1_2
+    style(1_dead, "display", "none") :- ~display_dead
+    style(0_dead, "display", "") :- case_0_0 | case_0_1
+    style(0_dead, "display", "none") :- ~case_0_0 & ~case_0_1
+    style(0_dead, "display", "none") :- ~display_dead
+
+    style(con_poison, "display", "") :- state(0,conclusion,1) & ~selected(witch_poison, 0)
+    style(con_poison, "display", "none") :- ~state(0,conclusion,1) | selected(witch_poison, 0)
+    style(con_guardian_c, "display", "") :- state(0,conclusion,1) & ~selected(guardian, 0)
+    style(con_guardian_c, "display", "none") :- ~state(0,conclusion,1) | selected(guardian, 0)
+
+    click(seer_decided) :: decided
+    style(seer_selecter, "display", "none") :- decided
+
+    innerhtml(char(X), Y) :- role(X,Y)
+    innerhtml(killed, X) :- selected(wolf, X)
+
+    innerhtml(check_identity, true) :- decided & selected(seer, Y) & role(Y, wolf)
+    innerhtml(check_identity, true) :- decided & selected(seer, Y) & role(Y, hunterwolf)
+    innerhtml(check_identity, false) :- decided & selected(seer, Y) & ~role(Y, wolf) & ~role(Y, hunterwolf)
+
+    innerhtml(hunter_status, up) :- selected(witch_poison, X) & role(Y, hunter) & distinct(X,Y)
+    innerhtml(hunter_status, down) :- selected(witch_poison, X) & role(X, hunter)
+    innerhtml(hunterwolf_status, up) :- selected(witch_poison, X) & role(Y, hunterwolf) & distinct(X,Y)
+    innerhtml(hunterwolf_status, down) :- selected(witch_poison, X) & role(X, hunterwolf)
+
+    innerhtml(2_dead_1, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(min(X, Y), Z)
+    innerhtml(2_dead_2, Z) :- selected(wolf, X) & selected(witch_poison, Y) & evaluate(max(X, Y), Z)
+    innerhtml(1_dead_1, X) :- case_1_0 & selected(wolf, X)
+    innerhtml(1_dead_1, X) :- case_1_1 & selected(wolf, X)
+    innerhtml(1_dead_1, X) :- case_1_2 & selected(witch_poison, X)
+
+    innerhtml(con_admirer, X) :- role(X, admirer)
+    innerhtml(con_admirer_c, X) :- selected(admirer, X)
+    innerhtml(con_guardian, X) :- role(X, guardian)
+    innerhtml(con_guardian_p, X) :- selected(guardian, X)
+    innerhtml(wolf_1, X) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & evaluate(min(X, Y, Z), X)
+    innerhtml(wolf_2, Y) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & ~evaluate(min(X, Y, Z), Y) & ~evaluate(max(X, Y, Z), Y)
+    innerhtml(wolf_3, Z) :- role(X, wolf) & role(Y, wolf) & role(Z, wolf) & mutex(X, Y, Z) & evaluate(max(X, Y, Z), Z)
+    innerhtml(wolf_hunter, X) :- role(X, hunterwolf)
+    innerhtml(wolf_kill, X) :- selected(wolf, X)
+    innerhtml(con_witch, X) :- role(X, witch)
+    innerhtml(con_witch_choice, not) :- selected(witch_choice, no)
+    innerhtml(witch_kill, X) :- selected(witch_poison, X)
+    innerhtml(con_seer, X) :- role(X, seer)
+    innerhtml(con_seer_check, X) :- selected(seer, X)
+    innerhtml(con_seer_tof, not) :- selected(seer, X) & ~role(X, wolf) & ~role(X, hunterwolf)
+    innerhtml(con_hunter, X) :- role(X, hunter)
+    innerhtml(con_hunter_s, not) :- selected(witch_poison, X) & role(X, hunter)
+    innerhtml(con_hunterwolf, X) :- role(X, hunterwolf)
+    innerhtml(con_hunterwolf_s, not) :- selected(witch_poison, X) & role(X, hunterwolf)
+
+    select(admirer_selecter, X) :: selected(admirer, Y) ==> ~selected(admirer, Y) & selected(admirer, X)
+    select(guardian_selecter, X) :: selected(guardian, Y) ==> ~selected(guardian, Y) & selected(guardian, X)
+    select(wolf_selecter, X) :: selected(wolf, Y) ==> ~selected(wolf, Y) & selected(wolf, X)
+    select(witch_choice, X) :: selected(witch_choice, Y) ==> ~selected(witch_choice, Y) & selected(witch_choice, X)
+    select(witch_choice, X) :: selected(witch_poison, Y) ==> ~selected(witch_poison, Y) & selected(witch_poison, 0)
+    select(witch_selecter, X) :: selected(witch_poison, Y) ==> ~selected(witch_poison, Y) & selected(witch_poison, X)
+    select(seer_selecter, X) :: selected(seer, Y) ==> ~selected(seer, Y) & selected(seer, X)
+
+
+</textarea>
+
+<textarea name='facts' style='font-family:courier;background-color:#eeeeee' rows='48' cols='32' disabled='true'></textarea>
+
+<!--=======================================================================-->
+
+</body>
+</html>

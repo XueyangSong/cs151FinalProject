@@ -63,6 +63,9 @@
 		<option value='hunterwolf'>hunterwolf (12 players)</option>
 		<option value='idiot'>idiot (12 players)</option>
 		<option value='kingwolf'>kingwolf (12 players)</option>
+		<option value='hunterwolf_admirer'>hunterwolf with an admirer(13 players)</option>
+		<option value='idiot_admirer'>idiot with an admirer(13 players)</option>
+		<option value='kingwolf_admirer'>kingwolf with an admirer(13 players)</option>
   </select><br /><br />
 	<button type='button' id='next' onclick='go_to()'>Play this one!</button>
 	<span id='get_config' style='display:none'></span>
@@ -139,7 +142,7 @@
 		<b>Configuration</b><br />
 		Villager: 4 Villagers<br />
 		God: Seer, Witch, Hunter, Idiot<br />
-		Werewolf: 4 Wolves<br />
+		Werewolf: 4 Wolves<br /><br />
 		<b>Winning Condition</b><br />
 		Werewolves: All Villagers are dead, or all Gods are dead.<br />
 		Humans (Villages and Gods): Defeat all Werewolves.<br /><br />
@@ -194,7 +197,7 @@
 	<p id='kingwolf'>
 		<b>Configuration</b><br />
 		Villager: 4 Villagers<br />
-		God: Guardian, Seer, Witch, Hunter<br />
+		God: Guardian, Seer, Witch, Knight<br />
 		Werewolf: 3 Wolves, 1 Kingwolf<br /><br />
 		<b>Winning Condition</b><br />
 		Werewolves: All Villagers are dead, or all Gods are dead.<br />
@@ -208,6 +211,82 @@
 			<tr>
 				<td>Guardian</td>
 				<td>God. The Guardian awakes first at night, selects one player at night,
+					and this player will not be killed by the Werewolves that night.<br />
+					The Guardian is allowed to choose not protecting anyone at night.<br />
+					The Guardian cannot protect the same player at two consecutive nights.
+				</td>
+			</tr>
+			<tr>
+				<td>Witch</td>
+				<td>God. The Witch awakes after the Werewolves.<br />
+					The Witch has one elixir and one poison.
+					The elixir is used to save a Player from Werewolves,
+					and the poison kills a Player.<br />
+					The Witch knows who is killed by the Werewolves if and only if
+					the elixir is not used, at which situation the Witch chooses
+					either use or not use the elixir to save the player.<br />
+					The Witch can choose to use up to one potion each night.<br />
+					If a player is guarded by the Guardian and saved by the Witch,
+					then the player is still dead.
+				</td>
+			</tr>
+			<tr>
+				<td>Seer</td>
+				<td>God. The Seer awakes at night, selects one player at night,
+					and the Seer will know whether this player is a werewolf or not.
+				</td>
+			</tr>
+			<tr>
+				<td>Knight</td>
+				<td>God. The Knight can choose a Player and have a duel with the selected player.<br />
+					If the selected player is a Werewolf, then the Knight wins, and the wolf dies immediately,
+					and enters the night.If the wolf is the Kingwolf, then the Kingwolf cannot bring anyone
+					to die together.<br />
+					If the selected player is not a Werewolf, then then Knight loses and dies, and the day continus.<br />
+				</td>
+			</tr>
+			<tr>
+				<td>Wolf</td>
+				<td>Werewolf. All werewolves awake at the same time and discuss together,
+					choose a player to kill.
+				</td>
+			</tr>
+			<tr>
+				<td>Kingwolf</td>
+				<td>Werewolf. The Kingwolf can bomb during the day, and brings one player
+					to death together.
+				</td>
+			</tr>
+		</table>
+	</p>
+	<p id='hunterwolf_admirer'>
+		<b>Configuration</b><br />
+		Villager: 4 Villagers, 1 Admirer<br />
+		God: Guardian, Seer, Witch, Hunter<br />
+		Werewolf: 3 Wolves, 1 Hunterwolf<br /><br />
+		<b>Winning Condition</b><br />
+		Werewolves: All Villagers are dead, or all Gods are dead.<br />
+		Humans (Villages and Gods): Defeat all Werewolves.<br />
+		Admirer: Same as the lover.<br /><br />
+		<b>Character Intro</b><br />
+		<table style="width:60%">
+			<tr>
+				<td>Villager</td>
+				<td>Human. The villager does not awake at night.</td>
+			</tr>
+			<tr>
+				<td>Admiror</td>
+				<td>The Admirer awakes first at night, selects one player at night,
+					and Admirer's winning condition becomes the same as the selected player.<br />
+					If the selected player is a Human, then the Admirer is in the Human Party,
+					but doesn't need to be killed by the Werewolves.<br />
+					If the selected player is a Werewolf, then the Admirer is in the Werewolf Party,
+					but doesn't need to be expelled by the Humans.
+				</td>
+			</tr>
+			<tr>
+				<td>Guardian</td>
+				<td>God. The Guardian awakes at night, selects one player at night,
 					and this player will not be killed by the Werewolves that night.<br />
 					The Guardian is allowed to choose not protecting anyone at night.<br />
 					The Guardian cannot protect the same player at two consecutive nights.
@@ -249,6 +328,151 @@
 				</td>
 			</tr>
 			<tr>
+				<td>Hunterwolf</td>
+				<td>Werewolf. As the name shows, a Hunterwolf is the hunter of Werewolves.<br />
+					When declared death, the Hunterwolf can use the gun to shoot one player to death.<br />
+					The Hunterwolf cannot shoot anyone if being poisoned by the Witch.<br />
+					Every night the Hunterwolf awakes to see the shot status:<br />
+					up: can shoot if dead<br />
+					down: cannot shoot if dead
+				</td>
+			</tr>
+		</table>
+	</p>
+	<p id='idiot_admirer'>
+		<b>Configuration</b><br />
+		Villager: 4 Villagers, 1 Admirer<br />
+		God: Seer, Witch, Hunter, Idiot<br />
+		Werewolf: 4 Wolves<br /><br />
+		<b>Winning Condition</b><br />
+		Werewolves: All Villagers are dead, or all Gods are dead.<br />
+		Humans (Villages and Gods): Defeat all Werewolves.<br /><br />
+		<b>Character Intro</b><br />
+		<table style="width:60%">
+			<tr>
+				<td>Villager</td>
+				<td>Human. The villager does not awake at night.</td>
+			</tr>
+			<tr>
+				<td>Admiror</td>
+				<td>The Admirer awakes first at night, selects one player at night,
+					and Admirer's winning condition becomes the same as the selected player.<br />
+					If the selected player is a Human, then the Admirer is in the Human Party,
+					but doesn't need to be killed by the Werewolves.<br />
+					If the selected player is a Werewolf, then the Admirer is in the Werewolf Party,
+					but doesn't need to be expelled by the Humans.
+				</td>
+			</tr>
+			<tr>
+				<td>Witch</td>
+				<td>God. The Witch awakes after the Werewolves.<br />
+					The Witch has one elixir and one poison.
+					The elixir is used to save a Player from Werewolves,
+					and the poison kills a Player.<br />
+					The Witch knows who is killed by the Werewolves if and only if
+					the elixir is not used, at which situation the Witch chooses
+					either use or not use the elixir to save the player.<br />
+					The Witch can choose to use up to one potion each night.
+				</td>
+			</tr>
+			<tr>
+				<td>Seer</td>
+				<td>God. The Seer awakes at night, selects one player at night,
+					and the Seer will know whether this player is a werewolf or not.
+				</td>
+			</tr>
+			<tr>
+				<td>Hunter</td>
+				<td>God. When declared death, the Hunter can use the gun to shoot one player to death.<br />
+					The Hunter cannot shoot anyone if being poisoned by the Witch.<br />
+					Every night the Hunter awakes to see the shot status:<br />
+					up: can shoot if dead<br />
+					down: cannot shoot if dead
+				</td>
+			</tr>
+			<tr>
+				<td>Idiot</td>
+				<td>God. The Idiot does not wake up at night.<br />
+					If being expelled during the day, the Idiot is allowed to show the identity to everyone,
+					and is still allowed to talk.
+				</td>
+			</tr>
+			<tr>
+				<td>Wolf</td>
+				<td>Werewolf. All werewolves awake at the same time and discuss together,
+					choose a player to kill.
+				</td>
+			</tr>
+		</table>
+	</p>
+	<p id='kingwolf_admirer'>
+		<b>Configuration</b><br />
+		Villager: 4 Villagers, 1 Admirer<br />
+		God: Guardian, Seer, Witch, Hunter<br />
+		Werewolf: 3 Wolves, 1 Kingwolf<br /><br />
+		<b>Winning Condition</b><br />
+		Werewolves: All Villagers are dead, or all Gods are dead.<br />
+		Humans (Villages and Gods): Defeat all Werewolves.<br /><br />
+		<b>Character Intro</b><br />
+		<table style="width:60%">
+			<tr>
+				<td>Villager</td>
+				<td>Human. The villager does not awake at night.</td>
+			</tr>
+			<tr>
+				<td>Admiror</td>
+				<td>The Admirer awakes first at night, selects one player at night,
+					and Admirer's winning condition becomes the same as the selected player.<br />
+					If the selected player is a Human, then the Admirer is in the Human Party,
+					but doesn't need to be killed by the Werewolves.<br />
+					If the selected player is a Werewolf, then the Admirer is in the Werewolf Party,
+					but doesn't need to be expelled by the Humans.
+				</td>
+			</tr>
+			<tr>
+				<td>Guardian</td>
+				<td>God. The Guardian awakes first at night, selects one player at night,
+					and this player will not be killed by the Werewolves that night.<br />
+					The Guardian is allowed to choose not protecting anyone at night.<br />
+					The Guardian cannot protect the same player at two consecutive nights.
+				</td>
+			</tr>
+			<tr>
+				<td>Witch</td>
+				<td>God. The Witch awakes after the Werewolves.<br />
+					The Witch has one elixir and one poison.
+					The elixir is used to save a Player from Werewolves,
+					and the poison kills a Player.<br />
+					The Witch knows who is killed by the Werewolves if and only if
+					the elixir is not used, at which situation the Witch chooses
+					either use or not use the elixir to save the player.<br />
+					The Witch can choose to use up to one potion each night.<br />
+					If a player is guarded by the Guardian and saved by the Witch,
+					then the player is still dead.
+				</td>
+			</tr>
+			<tr>
+				<td>Seer</td>
+				<td>God. The Seer awakes at night, selects one player at night,
+					and the Seer will know whether this player is a werewolf or not.
+				</td>
+			</tr>
+			<tr>
+				<td>Knight</td>
+				<td>God. The Knight can choose a Player and have a duel with the selected player.<br />
+					If the selected player is a Werewolf, then the Knight wins, and the wolf dies immediately,
+					and enters the night.If the wolf is the Kingwolf, then the Kingwolf cannot bring anyone
+					to die together.<br />
+					If the selected player is not a Werewolf, then then Knight loses and dies, and the day continus.<br />
+				</td>
+			</tr>
+			<tr>
+				<td>Wolf</td>
+				<td>Werewolf. All werewolves awake at the same time and discuss together,
+					choose a player to kill.
+				</td>
+			</tr>
+			<tr>
 				<td>Kingwolf</td>
 				<td>Werewolf. The Kingwolf can bomb during the day, and brings one player
 					to death together.
@@ -277,6 +501,12 @@
 	style(idiot, "display", "") :- idiot
 	style(kingwolf, "display", "none") :- ~kingwolf
 	style(kingwolf, "display", "") :- kingwolf
+	style(hunterwolf_admirer, "display", "none") :- ~hunterwolf_admirer
+	style(hunterwolf_admirer, "display", "") :- hunterwolf_admirer
+	style(idiot_admirer, "display", "none") :- ~idiot_admirer
+	style(idiot_admirer, "display", "") :- idiot_admirer
+	style(kingwolf_admirer, "display", "none") :- ~kingwolf_admirer
+	style(kingwolf_admirer, "display", "") :- kingwolf_admirer
 </textarea>
 
 <textarea name='facts' style='font-family:courier;background-color:#eeeeee' rows='48' cols='32' disabled='true'></textarea>
