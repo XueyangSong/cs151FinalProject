@@ -61,12 +61,16 @@
     <p>Which configuration do you want to play?</p>
 	<select id='choose_config' onchange='modselector(this)' style='width:500'>
 		<option value='default'></option>
-		<option value='hunterwolf'>hunterwolf (12 players)</option>
-		<option value='idiot'>idiot (12 players)</option>
-		<option value='kingwolf'>kingwolf (12 players)</option>
-		<option value='hunterwolf_admirer'>hunterwolf with an admirer(13 players)</option>
-		<option value='idiot_admirer'>idiot with an admirer(13 players)</option>
-		<option value='kingwolf_admirer'>kingwolf with an admirer(13 players)</option>
+		<optgroup label='12 players'>
+			<option value='hunterwolf'>hunterwolf</option>
+			<option value='idiot'>idiot</option>
+			<option value='kingwolf'>kingwolf</option>
+		</optgroup>
+		<optgroup label='13 players'>
+			<option value='hunterwolf_admirer'>hunterwolf with an admirer</option>
+			<option value='idiot_admirer'>idiot with an admirer</option>
+			<option value='kingwolf_admirer'>kingwolf with an admirer</option>
+		</optgroup>
   </select><br /><br />
 	<button type='button' id='next' onclick='go_to()'>Play this one!</button>
 	<span id='get_config' style='display:none'></span>
