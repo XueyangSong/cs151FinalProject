@@ -436,6 +436,10 @@
     select(witch_selecter, X) :: selected(witch_poison, Y) ==> ~selected(witch_poison, Y) & selected(witch_poison, X)
     select(seer_selecter, X) :: selected(seer, Y) ==> ~selected(seer, Y) & selected(seer, X)
 
+    attribute(next, "disabled", "true") :- state(0, seer, 1) & ~decided
+    attribute(next, "disabled", "false") :- ~state(0, seer, 1) | decided
+
+
 
 </textarea>
 
