@@ -357,6 +357,8 @@
     style(con_poison, "display", "") :- state(0,conclusion,1) & ~selected(witch_poison, 0)
     style(con_poison, "display", "none") :- ~state(0,conclusion,1) | selected(witch_poison, 0)
 
+    value(witch_selecter, X) :- selected(witch_poison, X)
+
     click(seer_decided) :: decided
     style(seer_selecter, "display", "none") :- decided
 

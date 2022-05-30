@@ -381,6 +381,8 @@
     style(con_guardian_c, "display", "") :- state(0,conclusion,1) & ~selected(guardian, 0)
     style(con_guardian_c, "display", "none") :- ~state(0,conclusion,1) | selected(guardian, 0)
 
+    value(witch_selecter, X) :- selected(witch_poison, X)
+
     click(seer_decided) :: decided
     style(seer_selecter, "display", "none") :- decided
 
